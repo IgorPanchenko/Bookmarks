@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+<h1>Авторизация</h1>
+<p>Пожалуйста, введите ваш логин и пароль</p>
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Авторизоваться"></p>
+</form>
+{% endblock %}
