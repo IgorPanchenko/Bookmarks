@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
- <h1>Ваша страница</h1>
- <p>Добро пожаловать, {{ user.username }}!</p>
+<h1>Ваша страница</h1>
+<p>Добро пожаловать, {{ user.username }}! Ты можешь <a href="{% url 'edit' %}">изменить данные профиля</a> или
+    <a href="{% url 'password_change' %}">изменить пароль</a>.</p>
 {% endblock %}
