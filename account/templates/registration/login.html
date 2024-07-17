@@ -6,7 +6,7 @@
 {% else %}
 <p>Пожалуйста, введите ваш логин и пароль</p>
 <p>Если у вас нет аккаунта, пожалуйста пройдите
-<a href="{% url 'register' %}">регистрацию</a></p>
+    <a href="{% url 'register' %}">регистрацию</a></p>
 {% endif %}
 <div class="login-form">
     <form action="{% url 'login' %}" method="post"> {{ form.as_p }}
@@ -15,8 +15,17 @@
     </form>
     <p>
         <a href="{% url 'password_reset' %}">
-        Забыли пароль?
+            Забыли пароль?
         </a>
     </p>
+</div>
+<div class="social">
+    <ul>
+        <li class="google">
+            <a href="{% url 'social:begin' 'google-oauth2' %}">
+            Sign in with Google
+            </a>
+        </li>
+    </ul>
 </div>
 {% endblock %}

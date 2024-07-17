@@ -7,6 +7,7 @@ from account.forms import LoginForm, UserRegistrationForm, UserEditForm, Profile
 from django.contrib.auth.decorators import login_required
 
 from account.models import Profile
+from django.contrib import messages
 
 
 @login_required
