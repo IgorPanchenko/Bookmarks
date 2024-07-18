@@ -22,6 +22,9 @@ class Image(models.Model):
         blank=True,
     )
 
+    def get_absolute_url(self):
+        return reverse('images:detail', args=[self.id, self.slug])
+
     class Meta:
         indexes = [
             models.Index(fields=['-created']),
@@ -36,5 +39,3 @@ class Image(models.Model):
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return reverse('images:detail', args=[self.id, self.slug])

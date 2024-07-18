@@ -1,0 +1,34 @@
+
+    <div>
+        <span class="count">Нравится: {{ total_likes }}</span>
+        {% if request.user not in image.users_like.all %}
+        <button
+                hx-post="{% url 'images:like' image.pk %}"
+                hx-trigger="click"
+                hx-target="#count"
+        >
+            Like
+        </button>
+        {% else %}
+        <button
+                hx-post="{% url 'images:like' image.pk %}"
+                hx-trigger="click"
+                hx-target="#count"
+        >
+            Unlike
+        </button>
+        {% endif %}
+    </div>
+    {{ image.description|linebreaks }}
+    <div class="image-likes">
+        {% for user in image.users_like.all %}
+        <div>
+            {% if user.profile.photo %}
+            <img src="{{ user.profile.photo.url }}">
+            {% endif %}
+            <p>{{ user.first_name }}</p>
+        </div>
+        {% empty %}
+        Пока нет лайков.
+        {% endfor %}
+    </div>

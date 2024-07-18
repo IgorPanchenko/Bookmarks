@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Dashboard{% endblock %}
+{% block title %}Соцсетка{% endblock %}
 {% block content %}
-  <h1>Dashboard</h1>
+  <h1>Соцсетка</h1>
   {% with total_images_created=request.user.images_created.count %}
-    <p>Welcome to your dashboard. You have bookmarked {{ total_images_created }} image{{ total_images_created|pluralize }}.</p>
+    <p>Рады приветствовать вас в Соцсетке. Кол-во закладок: {{ total_images_created }}</p>
   {% endwith %}
-  <p>Drag the following button to your bookmarks toolbar to bookmark images from other websites → <a href="javascript:{% include 'bookmarklet_launcher.js' %}" class="button">Bookmark it</a></p>
-  <p>You can also <a href="{% url 'edit' %}">edit your profile</a> or <a href="{% url 'password_change' %}">change your password</a>.</p>
+  <p>Перетащите следующую кнопку на панель инструментов закладок, чтобы добавить в закладки изображения с других веб-сайтов → <a href="javascript:{% include 'bookmarklet_launcher.js' %}" class="button">Закладка</a></p>
+  <p>Тут ты можешь <a href="{% url 'edit' %}">редактировать свой профиль</a> или <a href="{% url 'password_change' %}">сменить пароль</a>.</p>
 {% endblock %}
