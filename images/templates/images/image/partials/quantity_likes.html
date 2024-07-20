@@ -1,5 +1,8 @@
 
     <div>
+        <span class="count">
+ {{ total_views }} view{{ total_views|pluralize }}
+</span>
         <span class="count">Нравится: {{ total_likes }}</span>
         {% if request.user not in image.users_like.all %}
         <button
