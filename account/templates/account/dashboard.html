@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 {% block title %}Соцсетка{% endblock %}
 {% block content %}
-  <h1>Соцсетка</h1>
-  {% with total_images_created=request.user.images_created.count %}
-    <p>Рады приветствовать вас в Соцсетке. Кол-во закладок: {{ total_images_created }}</p>
-  {% endwith %}
-  <p>Перетащите следующую кнопку на панель инструментов закладок, чтобы добавить в закладки изображения с других веб-сайтов → <a href="javascript:{% include 'bookmarklet_launcher.js' %}" class="button">Закладка</a></p>
-  <p>Тут ты можешь <a href="{% url 'edit' %}">редактировать свой профиль</a> или <a href="{% url 'password_change' %}">сменить пароль</a>.</p>
+<h1>Соцсетка</h1>
+{% with total_images_created=request.user.images_created.count %}
+<p>Рады приветствовать вас в Соцсетке. Кол-во закладок: {{ total_images_created }}</p>
+{% endwith %}
+<p>Перетащите следующую кнопку на панель инструментов закладок, чтобы добавить в закладки изображения с других
+    веб-сайтов → <a href="javascript:{% include 'bookmarklet_launcher.js' %}" class="button">Закладка</a></p>
+<p>Тут ты можешь <a href="{% url 'edit' %}">редактировать свой профиль</a> или <a href="{% url 'password_change' %}">сменить
+    пароль</a>.</p>
+<h2>Последние действия</h2>
+<div id="action-list">
+    {% for action in actions %}
+        {% include 'actions/action/detail.html' %}
+    {% endfor %}
+</div>
 {% endblock %}

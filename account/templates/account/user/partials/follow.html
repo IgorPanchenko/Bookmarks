@@ -1,0 +1,11 @@
+      <span class="total">{{ user.followers.count }}</span>
+      follower<a {% if request.user in user.followers.all %} hx-post="{% url 'user_follow' user.pk  'un' %}" {% else %}
+   hx-post="{% url 'user_follow' user.pk  'follow' %}" {% endif %}
+   hx-target="#count"
+   class="follow button">
+    {% if request.user not in user.followers.all %}
+    Follow
+    {% else %}
+    Unfollow
+    {% endif %}
+    </a>
