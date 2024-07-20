@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 
+
 class Image(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -21,6 +22,7 @@ class Image(models.Model):
         related_name='images_liked',
         blank=True,
     )
+    total_likes = models.PositiveIntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('images:detail', args=[self.id, self.slug])
@@ -28,6 +30,7 @@ class Image(models.Model):
     class Meta:
         indexes = [
             models.Index(fields=['-created']),
+            models.Index(fields=['-total_likes']),
         ]
         ordering = ['-created']
 
